@@ -6,32 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Register">
 
-    <EditText
-        android:id="@+id/Edit_FullName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:ems="14"
-        android:hint="Enter your full name"
-        android:inputType="textPersonName"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <EditText
-        android:id="@+id/Edit_Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="14"
-        android:hint="Enter Your Password"
-        android:inputType="textPassword"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Edit_Username" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -45,36 +19,54 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/Confirm_Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="14"
-        android:hint="Confirm Your Password"
-        android:inputType="textPassword"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Edit_Password" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="211dp"
         android:layout_height="62dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="0dp"
         android:gravity="center"
-        android:text="Just one more step for a better Hololive experience"
+        android:text="Just one more step for a better Hololens experience"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="265dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.168"
+        app:srcCompat="@drawable/hololens" />
+
+    <EditText
+        android:id="@+id/Edit_FullName"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/edittextbackground"
+        android:ems="14"
+        android:paddingLeft="8dp"
+        android:hint="Enter your full name"
+        android:inputType="textPersonName"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+
 
     <EditText
         android:id="@+id/Edit_Username"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/edittextbackground"
         android:ems="14"
+        android:paddingLeft="8dp"
         android:hint="Enter your username"
         android:inputType="textPersonName"
         android:textSize="16dp"
@@ -82,15 +74,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Edit_FullName" />
 
+    <EditText
+        android:id="@+id/Edit_Password"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittextbackground"
+        android:ems="14"
+        android:paddingLeft="8dp"
+        android:hint="Enter Your Password"
+        android:inputType="textPassword"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Edit_Username" />
+
+    <EditText
+        android:id="@+id/Confirm_Password"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittextbackground"
+        android:ems="14"
+        android:paddingLeft="8dp"
+        android:hint="Confirm Your Password"
+        android:inputType="textPassword"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Edit_Password" />
+
     <Button
         android:id="@+id/signup"
         android:layout_width="101dp"
         android:layout_height="45dp"
         android:layout_marginTop="52dp"
         android:text="Sign Up"
+        android:background="@drawable/button_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Confirm_Password" />
+
 
     <TextView
         android:id="@+id/textView6"
