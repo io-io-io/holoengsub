@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HoloEngsub">
-        <activity android:name=".Profile"/>
+        <activity android:name=".Profile"></activity>
         <activity android:name=".Login" />
         <activity android:name=".Splash" />
         <activity android:name=".Register" />
