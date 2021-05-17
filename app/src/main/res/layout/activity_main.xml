@@ -23,7 +23,7 @@
         android:layout_height="53dp"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="Welcome to all Anime lovers please enjoy your favorite Youtuber in one platform "
+        android:text="One step closer for a better hololive experience "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

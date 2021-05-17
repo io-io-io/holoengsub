@@ -2,20 +2,26 @@ package umn.ac.id.holoengsub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Register extends AppCompatActivity {
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-    EditText fullname, username, password, confirm_password;
-    TextView clickhere_in;
+public class Register extends AppCompatActivity {
+    EditText fullname, email, password, confirm_password;
     Button signup;
-    DBHelper DB;
+    TextView clickhere_in;
+    FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,62 +29,57 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         fullname = findViewById(R.id.fullname);
-        username = findViewById(R.id.username);
+        email = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        confirm_password = (EditText) findViewById(R.id.confirm_password);
-        DB = new DBHelper(this);
+        confirm_password = findViewById(R.id.confirm_password);
+        signup = findViewById(R.id.signup);
+        clickhere_in = findViewById(R.id.clickhere_in);
+        fAuth = FirebaseAuth.getInstance();
+
+        if(fAuth.getCurrentUser() != null){
+            startActivity(new Intent(getApplicationContext(), Profile.class));
+            finish();
+        }
 
 
-        clickhere_in = this.findViewById(R.id.clickhere_in);
-        clickhere_in.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openLogin();
-            }
-        });
-
-        //signup, belum ada fungsinya, baru intent
-        signup = this.findViewById(R.id.signup);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                String name = fullname.getText().toString();
-                String user = username.getText().toString();
-                String pass = password.getText().toString();
-                String confirm = confirm_password.getText().toString();
-                if(name.equals("")||user.equals("")||pass.equals("")||confirm.equals(""))
-                    Toast.makeText(Register.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
-                    if(pass.equals(confirm)){
-                        Boolean checkuser = DB.checkusername(user);
-                        if(!checkuser){
-                            Boolean insert = DB.insertData(name, user, pass);
-                            if(insert){
-                                Toast.makeText(Register.this, "Sign up successful", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent (getApplicationContext(),Profile.class);
-                                startActivity(intent);
-                            }else{
-                                Toast.makeText(Register.this, "Sign up failed", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else{
-                            Toast.makeText(Register.this, "User already exists! ", Toast.LENGTH_SHORT).show();
-                        }
-                    }else{
-                        Toast.makeText(Register.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
-                    }
+            public void onClick(View v) {
+                String mail = email.getText().toString().trim();
+                String pass = password.getText().toString().trim();
+
+                //check ada yang kosong atau ga
+                if(TextUtils.isEmpty(mail)){
+                    email.setError("Please fill your email");
+                    return;
                 }
+                if(TextUtils.isEmpty(pass)){
+                    password.setError("Please fill your password");
+                    return;
+                }
+                if(pass.length() < 6){
+                    password.setError("Password must be more than 5 characters");
+                    return;
+                }
+
+                //register dan masukin data user pake firebase
+                fAuth.createUserWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(Register.this, "Sign up successful", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), Profile.class));
+                        }else{
+                            Toast.makeText(Register.this, "error!" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
-
         });
-
-
     }
 
-    public void openLogin() {
-        Intent intent = new Intent (this, Login.class);
-        startActivity(intent);
-    }
+
+
 
 
 

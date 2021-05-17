@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "210978176485",
+    "project_id": "hololens-6beed",
+    "storage_bucket": "hololens-6beed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210978176485:android:294710fda5afb9629a030c",
+        "android_client_info": {
+          "package_name": "umn.ac.id.holoengsub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210978176485-nmm5v11jvio6b9j8jq6famdelubvmj3o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHTuddZUTkoh5zm7eRX_EGVfmDTvZdDa0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210978176485-nmm5v11jvio6b9j8jq6famdelubvmj3o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
