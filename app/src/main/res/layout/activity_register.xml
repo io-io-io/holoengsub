@@ -58,21 +58,36 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 
-
     <EditText
         android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/edittextbackground"
         android:ems="14"
-        android:paddingLeft="8dp"
         android:hint="Enter your email"
         android:inputType="textPersonName"
+        android:paddingLeft="8dp"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fullname" />
+
+    <EditText
+        android:id="@+id/phonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edittextbackground"
+        android:ems="14"
+        android:hint="Enter your phone number"
+        android:inputType="textPersonName"
+        android:paddingLeft="8dp"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <EditText
         android:id="@+id/password"
@@ -87,7 +102,7 @@
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
 
     <EditText
         android:id="@+id/confirm_password"
@@ -104,17 +119,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password" />
 
+
     <Button
         android:id="@+id/signup"
         android:layout_width="101dp"
         android:layout_height="45dp"
-        android:layout_marginTop="52dp"
-        android:text="Sign Up"
+        android:layout_marginTop="44dp"
         android:background="@drawable/button_color"
+        android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
-
 
     <TextView
         android:id="@+id/textView6"
