@@ -1,8 +1,5 @@
 package umn.ac.id.holoengsub;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
@@ -16,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +23,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Profile extends AppCompatActivity implements View.OnClickListener {
 
-    Button signout,change_password,update_password;
+    Button signout,change_password,update_password;;
+    EditText new_password;
     TextView welcome;
     ImageView user_profile;
     FirebaseAuth mAuth;
@@ -38,6 +39,9 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_profile);
         welcome = findViewById(R.id.welcome);
         signout = findViewById(R.id.signout);
+        change_password = (Button)findViewById(R.id.change_password);
+        update_password = (Button)findViewById(R.id.update_password);
+        new_password = (EditText) findViewById(R.id.new_password);
         user_profile = findViewById(R.id.user_profile);
 
         signout.setOnClickListener(this);
@@ -48,9 +52,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         user = mAuth.getCurrentUser();
         if(user!=null){
             String name = user.getDisplayName();
-            String email_id = user.getEmail();
             Uri image_uri = user.getPhotoUrl();
-            welcome.setText("Welcome "+name+"\n"+email_id);
+            welcome.setText("Welcome, "+name);
             user_profile.setImageURI(image_uri);
         }
 
@@ -75,6 +78,14 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
             mAuth.signOut();
             Toast.makeText(Profile.this,"Logged out!",Toast.LENGTH_LONG).show();
             startActivity(new Intent(Profile.this,MainActivity.class));
+        }
+        else if(v.getId() == R.id.change_password){
+            new_password.setVisibility(View.VISIBLE);
+            update_password.setVisibility(View.VISIBLE);
+
+        }
+        else if(v.getId() == R.id.update_password){
+            ChangePasswordRequest(new_password.getText().toString());
         }
     }
 
@@ -109,6 +120,27 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         super.onStop();
         //on closing application signout user
         mAuth.signOut();
+    }
+    private void ChangePasswordRequest(String new_password) {
+        if(new_password.equals("")){
+            Toast.makeText(Profile.this, "Enter Password!! ", Toast.LENGTH_LONG).show();
+        }
+        else {
+            FirebaseUser user = mAuth.getCurrentUser();
+            user.updatePassword(new_password)
+                    .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(Profile.this, "User Password Updated.", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(Profile.this, "For Securtiy resons you have to re-login first.\nThen try to update password.", Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+                    });
+        }
+
     }
 
 

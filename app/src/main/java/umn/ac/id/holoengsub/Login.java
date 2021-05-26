@@ -1,8 +1,5 @@
 package umn.ac.id.holoengsub;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +8,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -22,6 +18,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     TextView clickhere_up;
     Button signin;
     private FirebaseAuth mAuth;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +31,13 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         signin.setOnClickListener(this);
         clickhere_up.setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        updateUI(user);
     }
 
 
@@ -61,27 +65,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         }
         else {
             mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Toast.makeText(Login.this, "Authentication failed: " + task.getException(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                            updateUI();
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(Login.this, "Authentication failed: " + task.getException(),
+                                    Toast.LENGTH_SHORT).show();
                         }
                     });
         }
     }
 
-    private void updateUI() {
-        FirebaseUser user = mAuth.getCurrentUser();
-        /*-------- Check if user is already logged in or not--------*/
+    private void updateUI(FirebaseUser user) {
+        user = mAuth.getCurrentUser();
+        /*-Check if user is already logged in or not-*/
         if (user != null) {
-            /*------------ If user's email is verified then access login -----------*/
+            /*-If user's email is verified then access login -*/
             if(user.isEmailVerified()){
                 Toast.makeText(Login.this, "Login Success.",
                         Toast.LENGTH_SHORT).show();
@@ -100,62 +100,3 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
 
 
-    /**EditText email1, password1;
-    Button signin;
-    TextView clickhere_up;
-    FirebaseAuth fAuth;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        email1 = findViewById(R.id.email1);
-        password1 = findViewById(R.id.password1);
-        fAuth = FirebaseAuth.getInstance();
-        signin = findViewById(R.id.signin);
-        clickhere_up = findViewById(R.id.clickhere_up);
-
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String mail = email1.getText().toString().trim();
-                String pass = password1.getText().toString().trim();
-
-                //check ada yang kosong atau ga
-                if(TextUtils.isEmpty(mail)){
-                    email1.setError("Please fill your email");
-                    return;
-                }
-                if(TextUtils.isEmpty(pass)){
-                    password1.setError("Please fill your password");
-                    return;
-                }
-
-                fAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(Login.this,"Login successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent (getApplicationContext(), Profile.class));
-                        }else{
-                            Toast.makeText(Login.this, "Error!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-            }
-        });
-        clickhere_up.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), Register.class));
-            }
-        });
-
-
-
-    }
-
-
-}**/
