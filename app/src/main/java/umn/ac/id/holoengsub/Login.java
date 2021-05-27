@@ -85,7 +85,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
             if(user.isEmailVerified()){
                 Toast.makeText(Login.this, "Login Success.",
                         Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(Login.this,Profile.class));
+                startActivity(new Intent(Login.this,Holovideo.class));
             }
             else {
                 Toast.makeText(Login.this, "Your Email is not verified.",
