@@ -47,6 +47,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
     Uri image_uri;
 
     @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        updateUI(user);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
@@ -223,13 +230,26 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         if(task.isSuccessful()){
                             Toast.makeText(Register.this,"Email verification sent on\n"+register_email.getText().toString(),Toast.LENGTH_LONG).show();
                             mAuth.signOut();
-                            startActivity(new Intent(Register.this,Profile.class));
+                            startActivity(new Intent(Register.this,Holovideo.class));
                         }
                         else {
                             Toast.makeText(Register.this,"Sign up Success But Failed to send verification email.",Toast.LENGTH_LONG).show();
                         }
                     }
                 });
+    }
+
+    private void updateUI(FirebaseUser user) {
+        user = mAuth.getCurrentUser();
+        /*-Check if user is already logged in or not-*/
+        if (user != null) {
+                startActivity(new Intent(Register.this,Holovideo.class));
+
+            } else {
+            Toast.makeText(Register.this, "Please register ",
+                    Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 
