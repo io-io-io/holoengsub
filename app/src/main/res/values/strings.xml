@@ -3,5 +3,46 @@
     <string name="hololive_engsub_center">HOLOLENS ENGLISH SUB CENTER</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="thumbnail_image_view_desc">Youtube video thumbnail image view</string>
+    <string name="close_player_activity">Close Player activity</string>
+
+    <string-array name="video_id_array">
+        <item>Zna-Jc3B4C4</item>
+        <item>67j60vcNY2E</item>
+        <item>LQQ5mBWingY</item>
+        <item>xXnKzZZJHEk</item>
+        <item>sdEhQiX_ffE</item>
+        <item>eHJqkv8eEmY</item>
+        <item>EYywK70It28</item>
+        <item>EYGU29Qnps8</item>
+        <item>Q9GZ9PEZhJc</item>
+        <item>M8oxXn8PAWw</item>
+    </string-array>
+
+    <string-array name="video_title_array">
+        <item>[Hololive] Everyone Use Their Piano Skill in Resident Evil 8 Village [Eng Sub]</item>
+        <item>[Hololive] Everyone reactions to receiving Handgun from Old man in Resident Evil 8 Village [Eng Sub]</item>
+        <item>Subaru Reacts to Doll That Sounds Like Marine in Resident Evil Village【ENG Sub/Hololive】</item>
+        <item>Subaru gets too scared then accidentally called herself "Atashi"【Hololive/Eng sub】</item>
+        <item>[Hololive] Everyone reactions to the closet jumpscare in Resident Evil 8 Village [English Sub]</item>
+        <item>5th Gen Are Having So Much Fun In Super Mario Party【Hololive English Sub】</item>
+        <item>【Hololive】Pekora, Rushia, Marine, Noel, Flare: Word Wolf Highlights ft. Mio【3rd Gen Collab】【Eng Sub】</item>
+        <item>【Hololive】Marine Imitating The Doll That Sounds Like Her ft. Noel, Flare【Eng Sub】</item>
+        <item>[Hololive] Everyone reactions to the window jumpscare in Resident Evil 8 Village [English Sub]</item>
+        <item>Marin's distorted love for Gawr Gura【 Hololive ▷ Eng sub】</item>
+    </string-array>
+
+    <string-array name="video_duration_array">
+        <item>07:23</item>
+        <item>11:34</item>
+        <item>01:14</item>
+        <item>01:56</item>
+        <item>03:32</item>
+        <item>03:34</item>
+        <item>11:30</item>
+        <item>02:02</item>
+        <item>07:51</item>
+        <item>02:11</item>
+    </string-array>
 
 </resources>
