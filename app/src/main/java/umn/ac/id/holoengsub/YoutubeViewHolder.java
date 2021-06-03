@@ -3,6 +3,7 @@ package umn.ac.id.holoengsub;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.youtube.player.YouTubeThumbnailView;
 import umn.ac.id.holoengsub.R;

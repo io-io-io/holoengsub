@@ -11,7 +11,7 @@
     app:cardCornerRadius="4dp"
     app:contentPadding="10dp">
 
-    <!-- youtube thumbnail view to show the thumbnails of videos -->
+
     <com.google.android.youtube.player.YouTubeThumbnailView
         android:id="@+id/video_thumbnail_image_view"
         android:layout_width="120dp"
@@ -19,5 +19,8 @@
         android:background="@android:color/darker_gray"
         android:contentDescription="@string/thumbnail_image_view_desc"
         android:scaleType="centerCrop" />
+
+
+
 
 </androidx.cardview.widget.CardView>

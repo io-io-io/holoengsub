@@ -14,7 +14,6 @@
         app:title="@string/app_name"
         app:titleTextColor="@android:color/white" />
 
-    <!-- Youtube Player Fragment -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/youtube_player_fragment"
         android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
@@ -23,13 +22,13 @@
         android:layout_above="@+id/recycler_view"
         android:layout_below="@+id/toolbar" />
 
-    <!-- RecyclerView to dipslay list of videos in horizontal direction -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:paddingEnd="10dp"
         android:paddingRight="10dp" />
+
 
 </RelativeLayout>

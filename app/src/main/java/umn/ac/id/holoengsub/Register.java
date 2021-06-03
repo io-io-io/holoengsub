@@ -138,6 +138,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1000) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 openCamera();
@@ -230,7 +231,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
                         if(task.isSuccessful()){
                             Toast.makeText(Register.this,"Email verification sent on\n"+register_email.getText().toString(),Toast.LENGTH_LONG).show();
                             mAuth.signOut();
-                            startActivity(new Intent(Register.this,Holovideo.class));
+                            startActivity(new Intent(Register.this,Player.class));
                         }
                         else {
                             Toast.makeText(Register.this,"Sign up Success But Failed to send verification email.",Toast.LENGTH_LONG).show();
@@ -243,7 +244,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener{
         user = mAuth.getCurrentUser();
         /*-Check if user is already logged in or not-*/
         if (user != null) {
-                startActivity(new Intent(Register.this,Holovideo.class));
+                startActivity(new Intent(Register.this,Player.class));
 
             } else {
             Toast.makeText(Register.this, "Please register ",

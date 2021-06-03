@@ -21,8 +21,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HoloEngsub"
         android:usesCleartextTraffic="true">
-        <activity android:name=".VideoPlay"></activity>
-        <activity android:name=".Holovideo" />
         <activity android:name=".Profile" />
         <activity android:name=".Login" />
         <activity android:name=".Splash" />

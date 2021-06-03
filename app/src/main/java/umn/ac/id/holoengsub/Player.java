@@ -39,9 +39,6 @@ public class Player extends AppCompatActivity {
         populateRecyclerView();
     }
 
-    /**
-     * initialize youtube player via Fragment and get  instance of YoutubePlayer
-     */
     private void initializeYoutubePlayer() {
 
         youTubePlayerFragment = (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_player_fragment);
