@@ -5,22 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/design_default_color_primary"
-        android:minHeight="?attr/actionBarSize"
-        app:title="@string/app_name"
-        app:titleTextColor="@android:color/white" />
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/youtube_player_fragment"
         android:name="com.google.android.youtube.player.YouTubePlayerSupportFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/recycler_view"
-        android:layout_below="@+id/toolbar" />
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="150dp" />
+    <include layout="@layout/toolbar_player"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -28,7 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:paddingEnd="10dp"
-        android:paddingRight="10dp" />
+        android:paddingRight="10dp"
+        tools:ignore="RtlSymmetry" />
 
 
 </RelativeLayout>

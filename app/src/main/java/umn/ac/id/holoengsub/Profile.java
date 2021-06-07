@@ -2,6 +2,7 @@ package umn.ac.id.holoengsub;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -37,6 +38,7 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
         welcome = findViewById(R.id.welcome);
         signout = findViewById(R.id.signout);
         change_password = (Button)findViewById(R.id.change_password);
@@ -53,8 +55,8 @@ public class Profile extends AppCompatActivity implements View.OnClickListener {
         if(user!=null){
             String name = user.getDisplayName();
             Uri image_uri = user.getPhotoUrl();
-            welcome.setText("Welcome, "+name);
             user_profile.setImageURI(image_uri);
+            welcome.setText("Welcome, "+name);
         }
 
 

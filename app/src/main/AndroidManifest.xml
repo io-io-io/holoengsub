@@ -21,7 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HoloEngsub"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Profile" />
+        <activity android:name=".webview"></activity>
+        <activity
+            android:name=".Profile"
+            android:parentActivityName=".Player" />
         <activity android:name=".Login" />
         <activity android:name=".Splash" />
         <activity android:name=".Register" />

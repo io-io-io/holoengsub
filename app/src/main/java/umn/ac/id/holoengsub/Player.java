@@ -1,8 +1,15 @@
 package umn.ac.id.holoengsub;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,10 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
-import umn.ac.id.holoengsub.YouTubeConfig;
-import umn.ac.id.holoengsub.R;
-import umn.ac.id.holoengsub.YoutubeVideoAdapter;
-import umn.ac.id.holoengsub.RecyclerViewOnClickListener;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +32,8 @@ public class Player extends AppCompatActivity {
 
     //youtube player to play video when new video selected
     private YouTubePlayer youTubePlayer;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +43,42 @@ public class Player extends AppCompatActivity {
         initializeYoutubePlayer();
         setUpRecyclerView();
         populateRecyclerView();
+
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbarplayer);
+        toolbar.setTitle("Player");
+        toolbar.setTitleTextColor(Color.WHITE);
+        setSupportActionBar(toolbar);
+        mAuth = FirebaseAuth.getInstance();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater=getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item_profile:
+                Intent profile = new Intent(Player.this, Profile.class);
+                startActivity(profile);
+                return true;
+            case R.id.privacy:
+                Intent web = new Intent(Player.this, webview.class);
+                startActivity(web);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 
     private void initializeYoutubePlayer() {
 
-        youTubePlayerFragment = (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_player_fragment);
+        youTubePlayerFragment = (YouTubePlayerSupportFragment)getSupportFragmentManager().findFragmentById(R.id.youtube_player_fragment);
 
         if (youTubePlayerFragment == null)
             return;
